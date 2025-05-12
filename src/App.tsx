@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Timer from './components/Timer';
+import Settings from './components/Settings';
+import './styles/main.scss';
 
-function App() {
+const App: React.FC = () => {
+  const [sessionLength, setSessionLength] = useState(25);
+  const [breakLength, setBreakLength] = useState(5);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+<div className="app">
+  <h1>Pomodoro Timer</h1>
+  <Settings 
+  sessionLength={sessionLength} 
+  setSessionLength={setSessionLength} 
+  breakLength={breakLength}
+  setBreakLength={setBreakLength}/>
+  <Timer
+   sessionLength={sessionLength} 
+   breakLength={breakLength}/>
+</div>
+  )
 }
 
-export default App;
+export default App
